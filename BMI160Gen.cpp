@@ -80,7 +80,11 @@ void BMI160GenClass::i2c_init()
   Serial.println("BMI160GenClass::i2c_init()...");
 #endif // DEBUG
 
+#ifdef CUSTOM_I2C_PINS
+  Wire.begin(CUSTOM_I2C_SDA_PIN, CUSTOM_I2C_SCL_PIN);
+#else
   Wire.begin();
+#endif
   Wire.beginTransmission(i2c_addr);
   if( Wire.endTransmission() != 0 )
       Serial.println("BMI160GenClass::i2c_init(): I2C failed.");

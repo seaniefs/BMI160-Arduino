@@ -562,7 +562,7 @@ class BMI160Class {
         bool getIntStepEnabled();
         void setIntStepEnabled(bool enabled);
         bool getIntMotionEnabled();
-        void setIntMotionEnabled(bool enabled);
+        void setIntMotionEnabled(bool enabled, uint8_t mask = 0x07);
         bool getIntZeroMotionEnabled();
         void setIntZeroMotionEnabled(bool enabled);
         bool getIntTapEnabled();

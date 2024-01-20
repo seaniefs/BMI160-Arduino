@@ -1354,13 +1354,14 @@ bool BMI160Class::getIntMotionEnabled() {
 
 /** Set Motion Detection interrupt enabled status.
  * @param enabled New interrupt enabled status
+ * @param mask Mask
  * @see getIntMotionEnabled()
  * @see BMI160_RA_INT_EN_0
  * @see BMI160_ANYMOTION_EN_BIT
  **/
-void BMI160Class::setIntMotionEnabled(bool enabled) {
+void BMI160Class::setIntMotionEnabled(bool enabled, uint8_t mask) {
     /* Enable for all 3 axes */
-    reg_write_bits(BMI160_RA_INT_EN_0, enabled ? 0x7 : 0x0,
+    reg_write_bits(BMI160_RA_INT_EN_0, enabled ? mask : 0x0,
                    BMI160_ANYMOTION_EN_BIT,
                    BMI160_ANYMOTION_EN_LEN);
 }
